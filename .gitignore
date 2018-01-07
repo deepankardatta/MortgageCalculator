@@ -4,9 +4,11 @@
 
 # Session Data files
 .RData
+.Ruserdata
 
 # Example code in package build process
 *-Ex.R
+unused/
 
 # Output files from R CMD build
 /*.tar.gz
@@ -21,6 +23,9 @@
 vignettes/*.html
 vignettes/*.pdf
 
+# produced reports
+R/*.html
+
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 
@@ -31,3 +36,32 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+.Rproj.user
