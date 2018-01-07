@@ -1,0 +1,17 @@
+Package: MortgageCalculator
+Type: Package
+Title: Functions to help in mortgage analysis
+Version: 0.1.0
+Depends: R (>= 3.4.0)
+Authors@R: person("Deepankar", "Datta", email = "deepankardatta@nhs.net",
+                  role = c("aut", "cre"))
+Description: Functions to assist in analysing mortgage interest rates.
+    This function calculates mortgage estimates. You should
+    seek professional advice before making financial decisions.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/deepankardatta/MortgageCalculator
+BugReports: https://github.com/deepankardatta/MortgageCalculator/issues
+RoxygenNote: 6.0.1
+Imports: lubridate
