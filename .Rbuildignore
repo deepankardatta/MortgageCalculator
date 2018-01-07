@@ -1,0 +1,17 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^unused$
+^development$
+^tests$
+^data-raw$
+^git-docs$
+^cran-comments\.Rmd$
+^cran-comments-.*\.png$
+^cran-comments\.md$
+^revdep$
+^README\.Rmd$
+^README-.*\.png$
+^NEWS\.Rmd$
+^NEWS-.*\.png$
+^R\blandr-report.html
+^R\building$
