@@ -11,7 +11,7 @@ monthly_mortgage_payments(annual_interest_rate, term, principal)
 
 \item{term}{The mortgage term in months}
 
-\item{principal}{The principal of the mortgage}
+\item{principal}{The principal of the mortgage (aka mortgage amount, or amount borrowed)}
 }
 \value{
 monthly_payment A value with the estimated monthly mortgage payment

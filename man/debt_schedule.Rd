@@ -4,15 +4,10 @@
 \alias{debt_schedule}
 \title{"debt_schedule": Calculates the mortgage debt schedule}
 \usage{
-debt_schedule(annual_interest_rate, term, principal, starting_date = NULL)
+debt_schedule(annual_interest_rate, term, principal, starting_date = NULL,
+  alternate_payment = NULL)
 }
 \arguments{
-\item{annual_interest_rate}{The annual interest rate of the mortgage}
-
-\item{term}{The mortgage term in months}
-
-\item{principal}{The principal of the mortgage}
-
 \item{starting_date}{(OPTIONAL) If a starting date is supplied the schedule will autofill with years and dates}
 }
 \value{

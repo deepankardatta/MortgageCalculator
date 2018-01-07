@@ -5,24 +5,26 @@
 #'
 #' @author Deepankar Datta <deepankardatta@nhs.net>
 #'
-#' @param annual_interest_rate The annual interest rate of the mortgage
-#' @param term The mortgage term in months
-#' @param principal The principal of the mortgage
+#' @include monthly_mortgage_payments.r
+#' @include interest_rate_by_period.r
+#'
 #' @param month_of_interest The value of the month that you wish to know the outstanding principle
+#' @param alternate_payment (OPTIONAL) A value for an alternate monthly payment used to pay off the principal - this is used for overpayments
 #'
 #' @return outstanding_owed The outstanding principle at the end of the supplied month of interest
 #'
 #' @references Formulas sourced from https://en.wikipedia.org/wiki/Mortgage_calculator
 #'
 #' @examples
-#' # amount_owed_after_n_months( annual_interest_rate , term , principal ,month_of_interest )
+#' # amount_owed_after_n_months( annual_interest_rate , term , principal , month_of_interest )
 #'
 #' @export
 
 amount_owed_after_n_months <- function( annual_interest_rate ,
                                         term ,
                                         principal ,
-                                        month_of_interest ){
+                                        month_of_interest ,
+                                        alternate_payment=NULL ){
 
   warning('This function calculates mortgage estimates. You should
           seek professional advice before making financial decisions.')
@@ -31,8 +33,12 @@ amount_owed_after_n_months <- function( annual_interest_rate ,
 
   # Call the monthly_mortgage_payments function to calculate the
   # minimum monthly repayment
-  monthly_payment <-
-    monthly_mortgage_payments( annual_interest_rate , term , principal )
+  if( is.null(alternate_payment) ) {
+    monthly_payment <-
+      monthly_mortgage_payments( annual_interest_rate , term , principal )
+  } else {
+    monthly_payment <- alternate_payment
+  }
 
   # Calculate monthly interest rate
   monthly_interest <-
@@ -48,7 +54,11 @@ amount_owed_after_n_months <- function( annual_interest_rate ,
   # Does the calculation to work out the outstanding amount after the month of interest
   outstanding_owed <- MIRE * principal - ( (MIRE-1) / monthly_interest * monthly_payment)
 
+  # If outstanding_owed is less then 0, make it 0. This is to
+  # compensate if we use an alternate payment to overpay
+  if( outstanding_owed < 0) { outstanding_owed = 0 }
+
   # Returns the data
-  return(outstanding_owed)
+  return( outstanding_owed )
 
 }

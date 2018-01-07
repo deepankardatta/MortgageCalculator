@@ -7,7 +7,7 @@
 #'
 #' @param annual_interest_rate The annual interest rate of the mortgage
 #' @param term The mortgage term in months
-#' @param principal The principal of the mortgage
+#' @param principal The principal of the mortgage (aka mortgage amount, or amount borrowed)
 #'
 #' @return monthly_payment A value with the estimated monthly mortgage payment
 #'

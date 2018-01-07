@@ -5,16 +5,12 @@
 \title{"amount_owed_after_n_months": Calculates the outstanding mortgage principle after a set amount of months}
 \usage{
 amount_owed_after_n_months(annual_interest_rate, term, principal,
-  month_of_interest)
+  month_of_interest, alternate_payment = NULL)
 }
 \arguments{
-\item{annual_interest_rate}{The annual interest rate of the mortgage}
-
-\item{term}{The mortgage term in months}
-
-\item{principal}{The principal of the mortgage}
-
 \item{month_of_interest}{The value of the month that you wish to know the outstanding principle}
+
+\item{alternate_payment}{(OPTIONAL) A value for an alternate monthly payment used to pay off the principal - this is used for overpayments}
 }
 \value{
 outstanding_owed The outstanding principle at the end of the supplied month of interest
@@ -25,7 +21,7 @@ Calculates the outstanding mortgage principle after a set amount of months.
 This function calculates mortgage estimates. You should seek professional advice before making financial decisions.
 }
 \examples{
-# amount_owed_after_n_months( annual_interest_rate , term , principal ,month_of_interest )
+# amount_owed_after_n_months( annual_interest_rate , term , principal , month_of_interest )
 
 }
 \references{

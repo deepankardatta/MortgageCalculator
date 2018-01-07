@@ -5,20 +5,13 @@
 \title{"debt_schedule_with_intro_rate": Calculates the mortgage debt schedule}
 \usage{
 debt_schedule_with_intro_rate(annual_interest_rate, term, principal,
-  introductory_interest_rate, introductory_term, starting_date = NULL)
+  introductory_interest_rate, introductory_term, starting_date = NULL,
+  alternate_payment = NULL)
 }
 \arguments{
-\item{annual_interest_rate}{The annual interest rate of the mortgage}
-
-\item{term}{The mortgage term in months}
-
-\item{principal}{The principal of the mortgage}
-
 \item{introductory_interest_rate}{The introductory interest rate}
 
 \item{introductory_term}{The introductory term in months}
-
-\item{starting_date}{(OPTIONAL) If a starting date is supplied the schedule will autofill with years and dates}
 }
 \value{
 debt_schedule A data frame containing the mortgage schedule

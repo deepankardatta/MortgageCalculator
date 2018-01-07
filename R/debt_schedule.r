@@ -7,9 +7,8 @@
 #'
 #' @import lubridate
 #'
-#' @param annual_interest_rate The annual interest rate of the mortgage
-#' @param term The mortgage term in months
-#' @param principal The principal of the mortgage
+#' @include amount_owed_after_n_months.r
+#'
 #' @param starting_date (OPTIONAL) If a starting date is supplied the schedule will autofill with years and dates
 #'
 #' @return debt_schedule A data frame containing the mortgage schedule
@@ -21,7 +20,11 @@
 #'
 #' @export
 
-debt_schedule <- function( annual_interest_rate , term , principal , starting_date=NULL ){
+debt_schedule <- function( annual_interest_rate ,
+                           term ,
+                           principal ,
+                           starting_date=NULL ,
+                           alternate_payment=NULL ){
 
   warning('This function calculates mortgage estimates. You should
           seek professional advice before making financial decisions.')
@@ -40,7 +43,11 @@ debt_schedule <- function( annual_interest_rate , term , principal , starting_da
   month_list <-
     c(0:term)
   amount_owed_list <-
-    amount_owed_after_n_months( annual_interest_rate , term , principal , c(0:term) )
+    amount_owed_after_n_months( annual_interest_rate ,
+                                term ,
+                                principal ,
+                                c(0:term) ,
+                                alternate_payment )
 
   # Optional date lists
   if( !is.null(starting_date) ) {

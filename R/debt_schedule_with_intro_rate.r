@@ -7,12 +7,10 @@
 #'
 #' @import lubridate
 #'
-#' @param annual_interest_rate The annual interest rate of the mortgage
-#' @param term The mortgage term in months
-#' @param principal The principal of the mortgage
+#' @include debt_schedule.r
+#'
 #' @param introductory_interest_rate The introductory interest rate
 #' @param introductory_term The introductory term in months
-#' @param starting_date (OPTIONAL) If a starting date is supplied the schedule will autofill with years and dates
 #'
 #' @return debt_schedule A data frame containing the mortgage schedule
 #'
@@ -29,7 +27,8 @@ debt_schedule_with_intro_rate <- function( annual_interest_rate ,
                                            principal ,
                                            introductory_interest_rate ,
                                            introductory_term ,
-                                           starting_date=NULL ){
+                                           starting_date=NULL ,
+                                           alternate_payment=NULL ){
 
   warning('This function calculates mortgage estimates. You should
           seek professional advice before making financial decisions.')
@@ -39,10 +38,12 @@ debt_schedule_with_intro_rate <- function( annual_interest_rate ,
   # Need to check if introductory_interest_rate and introductory_term are null
 
   # Calculate introductory rate
-  intro_rate_schedule <- debt_schedule( introductory_interest_rate ,
-                 term ,
-                 principal ,
-                 starting_date )
+  intro_rate_schedule <-
+    debt_schedule( introductory_interest_rate ,
+                   term ,
+                   principal ,
+                   starting_date ,
+                   alternate_payment )
 
   # Remove all the rows after the introductory term
   intro_rate_schedule <- intro_rate_schedule[ 1:introductory_term , ]
@@ -62,13 +63,15 @@ debt_schedule_with_intro_rate <- function( annual_interest_rate ,
   SVR_principal <- amount_owed_after_n_months( introductory_interest_rate ,
                                 term ,
                                 principal ,
-                                introductory_term )
+                                introductory_term ,
+                                alternate_payment )
 
   # This now does the actual calculation
   SVR_schedule <- debt_schedule( annual_interest_rate ,
-                                        SVR_term ,
-                                        SVR_principal ,
-                                        SVR_starting_date )
+                                 SVR_term ,
+                                 SVR_principal ,
+                                 SVR_starting_date ,
+                                 alternate_payment)
   SVR_schedule$month_list <- SVR_schedule$month_list + introductory_term
 
   # Combine the 2 data frames
